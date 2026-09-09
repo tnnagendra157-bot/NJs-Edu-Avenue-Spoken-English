@@ -1,1 +1,45 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#7c3aed"><meta name="description" content="NJ’s Edu Avenue – Advanced Basic Spoken English, Madhugiri"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"><title>NJ’s Edu Avenue | Spoken English</title></head><body><header class="top"><div class="brand"><div class="logoMark">NJ</div><div><b>NJ’s Edu Avenue</b><small>Spoken English • Madhugiri</small></div></div><button id="installBtn" class="ghost hidden">Install</button></header><main><section id="home" class="screen active"><div class="hero"><span class="pill">90-DAY MASTER CLASS</span><h1>Advanced Basic<br>Spoken English</h1><p>Learn accurately. Practise naturally. Speak confidently.</p><div class="method"><b>LEARN</b><span>→</span><b>PRACTICE</b><span>→</span><b>TRANSLATE</b><span>→</span><b>SPEAK</b></div></div><div class="grid"><button class="card" onclick="showScreen('course')"><strong>📚 24 Sessions</strong><span>Complete textbook pathway</span></button><button class="card" onclick="showScreen('practice')"><strong>🗣️ Practice</strong><span>Read, repeat, personalize, speak</span></button><button class="card" onclick="showScreen('quiz')"><strong>📝 Quick Quiz</strong><span>Test your grammar and usage</span></button><button class="card" onclick="showScreen('contact')"><strong>👨‍🏫 Teacher</strong><span>NAGENDRA T N</span></button></div><div class="info"><b>Course structure</b><p>Every session follows Vocabulary • Formal vs Natural Expressions • Grammar in Context • Everyday Conversation • Common Corrections • Session Review.</p></div></section><section id="course" class="screen"><div class="sectionHead"><div><span class="eyebrow">COURSE</span><h2>24 Sessions</h2></div><input id="search" placeholder="Search sessions…" oninput="renderSessions()"></div><div id="sessions"></div></section><section id="detail" class="screen"><button class="back" onclick="showScreen('course')">← All sessions</button><div id="detailContent"></div></section><section id="practice" class="screen"><span class="eyebrow">SPEAKING METHOD</span><h2>Practice Room</h2><div class="practiceBox"><h3>LEARN → PRACTICE → TRANSLATE → SPEAK</h3><p>Choose any session, read the examples aloud, change one detail, translate a familiar idea into English, then speak without looking.</p><button onclick="showScreen('course')">Choose a session</button></div><div class="info"><b>Teacher delivery guide</b><ul><li>Model each sentence aloud before repetition.</li><li>Move from controlled repetition to pair practice and free speaking.</li><li>Encourage contractions and natural rhythm where appropriate.</li><li>Prioritize intelligibility while correcting grammar.</li><li>Recycle vocabulary from previous sessions.</li></ul></div></section><section id="quiz" class="screen"><span class="eyebrow">QUICK QUIZ</span><h2>Check Yourself</h2><div id="quizBox"></div></section><section id="contact" class="screen"><span class="eyebrow">NJ’S EDU AVENUE</span><h2>Teacher & Contact</h2><div class="contactCard"><h3>NAGENDRA T N</h3><p>Advanced Basic Spoken English</p><p>Above Vysya Co-operative Bank,<br>Opp. TVV Petrol Bunk, GBN Road,<br>Madhugiri – 572132</p><a href="tel:7483011182">📞 7483011182</a><a href="https://wa.me/917483011182" target="_blank">💬 WhatsApp</a></div></section></main><nav><button data-screen="home" onclick="showScreen('home')">⌂<span>Home</span></button><button data-screen="course" onclick="showScreen('course')">▤<span>Course</span></button><button data-screen="practice" onclick="showScreen('practice')">◉<span>Practice</span></button><button data-screen="quiz" onclick="showScreen('quiz')">✓<span>Quiz</span></button><button data-screen="contact" onclick="showScreen('contact')">☎<span>Contact</span></button></nav><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5b21b6">
+<meta name="description" content="NJ’s Edu Avenue – Advanced Basic Spoken English, Madhugiri">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<title>NJ’s Edu Avenue | Spoken English</title>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="logoMark">NJ</div><div><b>NJ’s Edu Avenue</b><small>Spoken English • Madhugiri</small></div></div>
+  <button id="installBtn" class="ghost hidden">Install</button>
+</header>
+<main>
+<section id="home" class="screen active">
+  <div class="hero">
+    <span class="pill">90-DAY MASTER CLASS</span>
+    <h1>Advanced Basic<br><span>Spoken English</span></h1>
+    <p class="heroLead">Learn accurately. Practise naturally. Speak confidently.</p>
+    <div class="method"><b>LEARN</b><span>→</span><b>PRACTICE</b><span>→</span><b>TRANSLATE</b><span>→</span><b>SPEAK</b></div>
+    <button class="primaryHero" onclick="showScreen('course')">Start Learning →</button>
+  </div>
+  <div class="welcome"><span class="eyebrow">WELCOME TO NJ’S EDU AVENUE</span><h2>Build real English speaking confidence</h2><p>A structured 24-session pathway covering vocabulary, grammar, natural expressions, everyday conversations and speaking practice.</p></div>
+  <div class="grid">
+    <button class="card featured" onclick="showScreen('course')"><strong>📚 24 Sessions</strong><span>Complete textbook pathway</span></button>
+    <button class="card" onclick="showScreen('practice')"><strong>🗣️ Practice Room</strong><span>Read, repeat, personalize and speak</span></button>
+    <button class="card" onclick="showScreen('quiz')"><strong>📝 Quick Quiz</strong><span>Test your grammar and usage</span></button>
+    <button class="card" onclick="showScreen('contact')"><strong>👨‍🏫 Teacher</strong><span>NAGENDRA T N</span></button>
+  </div>
+  <div class="learningPath"><span class="eyebrow">YOUR LEARNING PATH</span><div class="pathRow"><div><b>01</b><span>Learn</span></div><i>→</i><div><b>02</b><span>Practise</span></div><i>→</i><div><b>03</b><span>Translate</span></div><i>→</i><div><b>04</b><span>Speak</span></div></div></div>
+  <div class="info"><b>Course structure</b><p>Every session follows Vocabulary • Formal vs Natural Expressions • Grammar in Context • Everyday Conversation • Common Corrections • Session Review.</p></div>
+  <div class="teacherPreview"><span class="eyebrow">YOUR TEACHER</span><h2>NAGENDRA T N</h2><p>Advanced Basic Spoken English</p><button class="outline" onclick="showScreen('contact')">Teacher & Contact →</button></div>
+</section>
+<section id="course" class="screen"><div class="sectionHead"><div><span class="eyebrow">COURSE</span><h2>24 Sessions</h2></div><input id="search" placeholder="Search sessions…" oninput="renderSessions()"></div><div id="sessions"></div></section>
+<section id="detail" class="screen"><button class="back" onclick="showScreen('course')">← All sessions</button><div id="detailContent"></div></section>
+<section id="practice" class="screen"><span class="eyebrow">SPEAKING METHOD</span><h2>Practice Room</h2><div class="practiceBox"><h3>LEARN → PRACTICE → TRANSLATE → SPEAK</h3><p>Choose any session, read the examples aloud, change one detail, translate a familiar idea into English, then speak without looking.</p><button onclick="showScreen('course')">Choose a session</button></div><div class="info"><b>Teacher delivery guide</b><ul><li>Model each sentence aloud before repetition.</li><li>Move from controlled repetition to pair practice and free speaking.</li><li>Encourage contractions and natural rhythm where appropriate.</li><li>Prioritize intelligibility while correcting grammar.</li><li>Recycle vocabulary from previous sessions.</li></ul></div></section>
+<section id="quiz" class="screen"><span class="eyebrow">QUICK QUIZ</span><h2>Check Yourself</h2><div id="quizBox"></div></section>
+<section id="contact" class="screen"><span class="eyebrow">NJ’S EDU AVENUE</span><h2>Teacher & Contact</h2><div class="contactCard"><h3>NAGENDRA T N</h3><p>Advanced Basic Spoken English</p><p>Above Vysya Co-operative Bank,<br>Opp. TVV Petrol Bunk, GBN Road,<br>Madhugiri – 572132</p><a href="tel:7483011182">📞 7483011182</a><a href="https://wa.me/917483011182" target="_blank">💬 WhatsApp</a></div></section>
+</main>
+<nav><button data-screen="home" onclick="showScreen('home')">⌂<span>Home</span></button><button data-screen="course" onclick="showScreen('course')">▤<span>Course</span></button><button data-screen="practice" onclick="showScreen('practice')">◉<span>Practice</span></button><button data-screen="quiz" onclick="showScreen('quiz')">✓<span>Quiz</span></button><button data-screen="contact" onclick="showScreen('contact')">☎<span>Contact</span></button></nav>
+<script src="app.js"></script>
+</body></html>
