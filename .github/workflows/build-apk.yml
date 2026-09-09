@@ -22,6 +22,26 @@ jobs:
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
           echo "Project directory: $PROJECT_DIR"
 
+      - name: Apply build compatibility fix
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/njseduavenue/spokenenglish/MainActivity.kt')
+          s = p.read_text()
+          old = '''        if (showSplash) {\n            SplashScreen()\n            return@MaterialTheme\n        }\n        Scaffold('''
+          new = '''        if (showSplash) {\n            SplashScreen()\n        } else {\n        Scaffold('''
+          if old not in s:
+              raise SystemExit('Expected App() splash block was not found')
+          s = s.replace(old, new, 1)
+          marker = '''        }\n    }\n}\n\n@Composable\nfun SplashScreen()'''
+          replacement = '''        }\n        }\n    }\n}\n\n@Composable\nfun SplashScreen()'''
+          if marker not in s:
+              raise SystemExit('Expected App() closing block was not found')
+          s = s.replace(marker, replacement, 1)
+          p.write_text(s)
+          PY
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
