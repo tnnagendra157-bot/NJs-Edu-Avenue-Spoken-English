@@ -1,1 +1,28 @@
-const NJ_TEACHER_IMAGE="data:image/jpeg;base64,PLACEHOLDER";
+const NJ_TEACHER_IMAGE="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcU...";
+
+function openFeature(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const target=document.getElementById(id);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b.dataset.screen===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showTranslation(el) {
+  const answer=el.nextElementSibling;
+  if(answer) answer.classList.toggle('revealed');
+}
+
+function speakLine(text) {
+  if('speechSynthesis' in window) { const u=new SpeechSynthesisUtterance(text); u.lang='en-IN'; u.rate=.9; speechSynthesis.cancel(); speechSynthesis.speak(u); }
+}
+
+function buildFeatureScreens() {
+  const host=document.getElementById('featureScreens'); if(!host) return;
+  host.innerHTML=`
+  <section id="learn" class="screen featureScreen"><span class="eyebrow">LEARN</span><h2>Learn English Step by Step</h2><div class="featureIntro"><b>24 structured sessions</b><p>Build your English from greetings and everyday vocabulary to tenses, natural expressions, practical conversations and final speaking.</p><button class="featurePrimary" onclick="openFeature('course')">📚 Open 24 Sessions →</button></div><div class="miniGrid"><div><b>📖 Vocabulary</b><span>Useful words for daily communication.</span></div><div><b>🧩 Grammar</b><span>Grammar taught in context.</span></div><div><b>💬 Natural English</b><span>Formal vs natural expressions.</span></div><div><b>🗣️ Conversation</b><span>Practice complete everyday dialogues.</span></div></div></section>
+  <section id="translate" class="screen featureScreen"><span class="eyebrow">TRANSLATE</span><h2>Kannada → English</h2><p class="subtle">Read the Kannada sentence, think in English, then tap to reveal the model answer.</p><div class="translateList"><div class="translateCard"><b>ನನ್ನ ಹೆಸರು ರವಿ.</b><button onclick="showTranslation(this)">Show English</button><p>My name is Ravi.</p><button class="voice" onclick="speakLine('My name is Ravi.')">🔊 Listen</button></div><div class="translateCard"><b>ನಾನು ಮಧುಗಿರಿಯಿಂದ ಬಂದಿದ್ದೇನೆ.</b><button onclick="showTranslation(this)">Show English</button><p>I am from Madhugiri.</p><button class="voice" onclick="speakLine('I am from Madhugiri.')">🔊 Listen</button></div><div class="translateCard"><b>ನೀವು ಹೇಗಿದ್ದೀರಿ?</b><button onclick="showTranslation(this)">Show English</button><p>How are you?</p><button class="voice" onclick="speakLine('How are you?')">🔊 Listen</button></div><div class="translateCard"><b>ನಾನು ಪ್ರತಿದಿನ ಇಂಗ್ಲಿಷ್ ಅಭ್ಯಾಸ ಮಾಡುತ್ತೇನೆ.</b><button onclick="showTranslation(this)">Show English</button><p>I practise English every day.</p><button class="voice" onclick="speakLine('I practise English every day.')">🔊 Listen</button></div><div class="translateCard"><b>ದಯವಿಟ್ಟು ಮತ್ತೆ ಹೇಳಿ.</b><button onclick="showTranslation(this)">Show English</button><p>Please say that again.</p><button class="voice" onclick="speakLine('Please say that again.')">🔊 Listen</button></div><div class="translateCard"><b>ನನಗೆ ಇಂಗ್ಲಿಷ್ ಮಾತನಾಡಲು ಆತ್ಮವಿಶ್ವಾಸ ಬೇಕು.</b><button onclick="showTranslation(this)">Show English</button><p>I want confidence to speak English.</p><button class="voice" onclick="speakLine('I want confidence to speak English.')">🔊 Listen</button></div></div></section>
+  <section id="speak" class="screen featureScreen"><span class="eyebrow">SPEAK</span><h2>WhatsApp-Style Conversation</h2><p class="subtle">Read the chat aloud. Then replace one detail and speak it again.</p><div class="chat"><div class="bubble left"><small>Friend</small>Hello! How are you today?</div><div class="bubble right"><small>You</small>Hi! I’m doing well. How about you?</div><div class="bubble left"><small>Friend</small>I’m good. Are you ready for English class?</div><div class="bubble right"><small>You</small>Yes, I’m ready. I want to improve my speaking.</div><div class="bubble left"><small>Friend</small>Great! Let’s practise together.</div><div class="bubble right"><small>You</small>Sure. Let’s start!</div></div><button class="featurePrimary" onclick="speakLine('Hi! I’m doing well. How about you?')">🔊 Practise My Line</button></section>
+  <section id="teacher" class="screen featureScreen"><span class="eyebrow">NJ’S EDU AVENUE</span><h2>Teacher Details</h2><div class="teacherHero"><img src="${NJ_TEACHER_IMAGE}" alt="Teacher NAGENDRA T N"><div><h3>NAGENDRA T N</h3><p>Founder & Spoken English Teacher</p><span>Advanced Basic Spoken English</span></div></div><div class="contactDetails"><p>📍 Above Vysya Co-operative Bank, Opp. TVV Petrol Bunk, GBN Road, Madhugiri – 572132</p><a href="tel:7483011182">📞 7483011182</a><a href="https://wa.me/917483011182" target="_blank">💬 WhatsApp Teacher</a></div></section>`;
+}
+window.addEventListener('DOMContentLoaded',buildFeatureScreens);
