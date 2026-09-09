@@ -22,11 +22,11 @@ jobs:
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
           echo "Project directory: $PROJECT_DIR"
 
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '17'
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
@@ -41,11 +41,22 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Build debug APK
+      - name: Build debug APK and capture log
         working-directory: ${{ env.PROJECT_DIR }}
-        run: gradle assembleDebug --stacktrace
+        run: |
+          set -o pipefail
+          gradle assembleDebug --stacktrace --no-daemon 2>&1 | tee build.log
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NJs-Edu-Avenue-Build-Log
+          path: ${{ env.PROJECT_DIR }}/build.log
+          if-no-files-found: warn
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: NJs-Edu-Avenue-Spoken-English-APK
